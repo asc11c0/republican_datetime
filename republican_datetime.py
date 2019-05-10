@@ -1561,12 +1561,3 @@ datetime.resolution = timedelta(microseconds=1)
 
 _datetime_class = datetime
 
-if __name__ == "__main__":
-    d = date.today()
-    print (d.republican_strftime("Today is %A, %d %B %X, %e."))
-    # print ("Historical format: "+d.historical_format())
-    t = time.from_sexagesimal(_datetime.datetime.now().time())
-    print (t.republican_strftime("Current time is %H.%M.%S"))
-
-    f = datetime.now()
-    print (f.to_gregorian())
