@@ -1,10 +1,18 @@
-# French republican calendar and decimal clock library. Includes republican date, time, datetime and timedelta classes
-# and conversion functions for Gregorian dates.
+# French republican calendar and decimal clock library.
+# Copyright (C) 2019 CE / 227 RE  Andreas Hollmeier
 #
-# Most converters found in the internet do not calculate the sextiles (leap years) in regard to the autumn equinox, but
-# rather with the Romme rule (insertion of the 6th of Sans-Cullotides in 4-100-400 year intervals). Since the
-# Decree of 4 Frimare an II by the National Assembly of France clearly established the autumn equinox rule, this is
-# plainly incorrect. This converter calculates the autumn equinoxes with the average lenght of the tropical year.
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import datetime as _datetime
 import time as _time
@@ -437,7 +445,7 @@ class timedelta:
     def __str__(self):
         mm, ss = divmod(self._seconds, 100)
         hh, mm = divmod(mm, 100)
-        s = "%d:%02d:%02d" % (hh, mm, ss)
+        s = "%d.02d.%02d" % (hh, mm, ss)
         if self._days:
             def plural(n):
                 return n, abs(n) != 1 and "s" or ""
@@ -689,11 +697,11 @@ class date:
 
     @classmethod
     def fromordinal(cls, o):
-        "Republican version of the Gregorian fromordinal function where 1 Vendémiaire 1 equals republican ordinal 0."
+        """Construct a Republican date from a proleptic Gregorian ordinal."""
         year = 1
         month = 1
         day = 1
-        rem_o = o
+        rem_o = o-654415  # 654415 = 1 Vendemiaire an 1
         if rem_o >= 0:
             while rem_o >= 365+_is_sextile_year(year):
                 rem_o -= 365 + _is_sextile_year(year)
@@ -772,6 +780,7 @@ class date:
         return _time.mktime(self.to_gregorian().timetuple())
 
     def toordinal(self):
+        """Return proleptic Gregorian ordinal."""
         o = 0
         if self._year >= 1:
             for y in range(1, self._year):
@@ -781,7 +790,7 @@ class date:
                 o -= 365+_is_sextile_year(y-1)
         o += (self._month-1)*30
         o += self._day-1
-        return o
+        return o+654415  # 654415 = 1 Vendemiaire an 1
 
     def __eq__(self, other):
         if isinstance(other, date):
