@@ -10,7 +10,7 @@ and the [decimal time](https://en.wikipedia.org/wiki/Decimal_time) introduced du
  `timedelta` classes
 - correct calculation of the leap years by the time of the autumn equinoxes,
 instead of the obsolete Romme rule
-- support of negative Republican years (i. e. 17 Messidor -3 for 14 July 1789)
+- support of negative Republican years (i. e. 26 Messidor -3 for 14 July 1789)
 - conversion exact to the microsecond
 - Republican- and decimal-time-specific formatting functions
 - custom `republican_strftime` method for formatting Republican dates
