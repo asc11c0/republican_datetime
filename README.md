@@ -241,6 +241,9 @@ Currently, the autumn equinoxes are calculated by taking a reference autumn equi
 23 September 2018 CE, 01:54 UTC) and repeatedly adding or subtracting the average length of the tropical
 year (currently 365.2421896698 ephemeris days).
 
+## See also
+For a conversion utility using this library (similar to Linux' `date`), see [fdate.py](https://gist.github.com/asc11c0/0634da906ce967428eb34ceae7e9ff49).
+
 ## License
 This project is licensed under the GNU GPLv3 License - see
 [LICENSE.md](LICENSE.md) for details.
