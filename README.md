@@ -200,7 +200,7 @@ The custom functions should be pretty self-explanatory.
 - `MONTHS_ABBRVS`: list off all month names (abbreviated, like 'The')
 
 - `DECADE_DAYS`: list of all decade days (like 'Primidi')
-- `DECADE_DAYS`_ABBRVS: list of all decade days (abbreviated, like 'Pri')
+- `DECADE_DAYS_ABBRVS`: list of all decade days (abbreviated, like 'Pri')
 
 - `DAY_NAMES`: list of all day names (like 'Raisin' for 1 Vendémiaire)
 
