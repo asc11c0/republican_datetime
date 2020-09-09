@@ -145,11 +145,14 @@ def _start_of_republican_year(year):
 
 
 def _is_sextile_year(republican_year):
-    year_length = _start_of_republican_year(republican_year+1)-_start_of_republican_year(republican_year)
+    equinox = REFERENCE_EQUINOX + (republican_year - REFERENCE_YEAR) * TROPICAL_YEAR
+    next_equinox = equinox + TROPICAL_YEAR
+    length_days = next_equinox
+    year_length = next_equinox - equinox
     if year_length.days == 365:
-        return False
-    elif year_length.days == 366:
         return True
+    elif year_length.days == 366:
+        return False
 
 
 def _convert_decimal_to_sexagesimal(dec_hour, dec_minute, dec_second, dec_microsecond):
